@@ -22,3 +22,10 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+- Create a secret key base locally by:
+
+1. Remove config/master.key and config/credentials.yml.enc if they exist.
+2. Run in the terminal: EDITOR=code rails credentials:edit 
+3. Close the editor that opens.
+4. This command will create a new master.key and credentials.yml.enc if they do not exist.

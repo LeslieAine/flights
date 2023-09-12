@@ -1,6 +1,8 @@
 module Api
     module V1
         class AirlinesController < ApplicationController
+            protect_from_forgery with: :null_session
+            
             def index
                 airlines = Airline.all
 
@@ -20,6 +22,7 @@ module Api
                     render json: AirlineSerializer.new(airline).serialized_json
                 else
                     render json: { error: airline.errors.messages }, status: 422
+                end
             end
 
             def update
@@ -29,6 +32,7 @@ module Api
                     render json: AirlineSerializer.new(airline, options).serialized_json
                 else
                     render json: { error: airline.errors.messages }, status: 422
+                end
             end
 
             def destroy
@@ -38,6 +42,7 @@ module Api
                     head :no_content
                 else
                     render json: { error: airline.errors.messages }, status: 422
+                end
             end
 
             private
